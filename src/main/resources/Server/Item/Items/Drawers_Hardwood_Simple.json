@@ -8,17 +8,6 @@
   "Categories": [
     "Drawers.Drawers"
   ],
-  "State": {
-    "Definitions": {
-      "On": {
-        "CustomModelAnimation": "Blocks/Animations/Drawers/Open.blockyanim"
-      },
-      "Off": {
-        "CustomModelAnimation": "Blocks/Animations/Drawers/Close.blockyanim"
-      }
-    }
-  },
-
   "Recipe": {
     "Input": [
       {
@@ -51,7 +40,43 @@
       }
     ],
     "RotationYawPlacementOffset": "None",
-    "RandomRotation": "None"
+    "RandomRotation": "None",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          "ChangeDrawerState"
+        ],
+        "Cooldown": {
+          "Cooldown": 30,
+          "Id": "drawer_cooldown"
+        },
+        "RequireNewClick": true
+      }
+    },
+    "State": {
+      "Definitions": {
+        "On": {
+          "InteractionHint": "interactionHints.turnoff",
+          "CustomModel": "Blocks/Drawers/Crude_Drawer.blockymodel",
+          "CustomModelAnimation": "Blocks/Animations/Drawers/Open.blockyanim",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Drawers/Crude_Drawer_Texture.png"
+            }
+          ]
+        },
+        "Off": {
+          "InteractionHint": "interactionHints.turnoff",
+          "CustomModel": "Blocks/Drawers/Crude_Drawer.blockymodel",
+          "CustomModelAnimation": "Blocks/Animations/Drawers/Close.blockyanim",
+          "CustomModelTexture": [
+            {
+              "Texture": "Blocks/Drawers/Crude_Drawer_Texture.png"
+            }
+          ]
+        }
+      }
+    }
   },
   "ResourceTypes": [
     {

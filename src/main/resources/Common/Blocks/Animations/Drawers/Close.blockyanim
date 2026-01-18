@@ -1,27 +1,72 @@
 {
   "formatVersion": 1,
-  "duration": 27.5,
+  "duration": 90,
   "holdLastKeyframe": false,
   "nodeAnimations": {
     "drawer": {
       "position": [
         {
           "time": 0,
-          "delta": {"x": 0, "y": 0, "z": 19},
-          "interpolationType": "linear"
+          "delta": {"x": 0, "y": 0, "z": 17.44},
+          "interpolationType": "smooth"
+        },
+        {
+          "time": 3,
+          "delta": {"x": 0, "y": 0, "z": 15.12},
+          "interpolationType": "smooth"
+        },
+        {
+          "time": 5,
+          "delta": {"x": 0, "y": 0, "z": 10.32},
+          "interpolationType": "smooth"
+        },
+        {
+          "time": 8,
+          "delta": {"x": 0, "y": 0, "z": 4.8},
+          "interpolationType": "smooth"
         },
         {
           "time": 10,
           "delta": {"x": 0, "y": 0, "z": 0},
-          "interpolationType": "linear"
+          "interpolationType": "smooth"
+        },
+        {
+          "time": 12,
+          "delta": {"x": 0, "y": 0, "z": -0.02},
+          "interpolationType": "smooth"
+        },
+        {
+          "time": 15,
+          "delta": {"x": 0, "y": 0, "z": 0.55},
+          "interpolationType": "smooth"
         },
         {
           "time": 18,
           "delta": {"x": 0, "y": 0, "z": 1},
-          "interpolationType": "linear"
+          "interpolationType": "smooth"
+        },
+        {
+          "time": 20,
+          "delta": {"x": 0, "y": 0, "z": 0.53},
+          "interpolationType": "smooth"
         },
         {
           "time": 23,
+          "delta": {"x": 0, "y": 0, "z": 0},
+          "interpolationType": "smooth"
+        },
+        {
+          "time": 25,
+          "delta": {"x": 0, "y": 0, "z": 0},
+          "interpolationType": "smooth"
+        },
+        {
+          "time": 28,
+          "delta": {"x": 0, "y": 0, "z": 0},
+          "interpolationType": "smooth"
+        },
+        {
+          "time": 30,
           "delta": {"x": 0, "y": 0, "z": 0},
           "interpolationType": "smooth"
         }

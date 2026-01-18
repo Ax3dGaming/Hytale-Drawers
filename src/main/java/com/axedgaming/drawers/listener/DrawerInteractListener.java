@@ -36,7 +36,7 @@ public class DrawerInteractListener {
         /* =====================
            Right Click → Extract
            ===================== */
-        if (type == InteractionType.Secondary) {
+        if (type == InteractionType.Primary) {
 
             ItemStack hand = event.getItemInHand();
             int amount = (hand == null || hand.isEmpty())
@@ -55,7 +55,7 @@ public class DrawerInteractListener {
         /* =====================
            Left Click → Insert
            ===================== */
-        if (type == InteractionType.Primary) {
+        if (type == InteractionType.Secondary) {
 
             ItemStack hand = event.getItemInHand();
 
