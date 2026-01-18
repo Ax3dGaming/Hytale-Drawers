@@ -3,8 +3,22 @@
     "Name": "server.items.Drawers_Hardwood_Simple.name"
   },
   "Parent": "Wood_Softwood_Planks",
-  "Icon": "Icons/ItemsGenerated/Wood_Hardwood_Planks.png",
+  "Icon": "Icons/ItemsGenerated/Drawers_Hardwood_Simple.png",
   "Set": "Wood_Hardwood_Planks",
+  "Categories": [
+    "Drawers.Drawers"
+  ],
+  "State": {
+    "Definitions": {
+      "On": {
+        "CustomModelAnimation": "Blocks/Animations/Drawers/Open.blockyanim"
+      },
+      "Off": {
+        "CustomModelAnimation": "Blocks/Animations/Drawers/Close.blockyanim"
+      }
+    }
+  },
+
   "Recipe": {
     "Input": [
       {
@@ -24,15 +38,20 @@
     "OutputQuantity": 1
   },
   "BlockType": {
-    "Textures": [
+    "ParticleColor": "#693e2a",
+    "VariantRotation": "NESW",
+    "CustomModel": "Blocks/Drawers/Crude_Drawer.blockymodel",
+    "DrawType": "Model",
+    "Material": "Solid",
+    "Opacity": "Transparent",
+    "RequiresAlphaBlending": false,
+    "CustomModelTexture": [
       {
-        "Weight": 1,
-        "UpDown": "BlockTextures/Wood_Hardwood_Planks.png",
-        "Sides": "BlockTextures/Wood_Hardwood_Planks_Side.png"
+        "Texture": "BlockTextures/Crude_Drawer.png"
       }
     ],
-    "ParticleColor": "#693e2a",
-    "VariantRotation": "NESW"
+    "RotationYawPlacementOffset": "None",
+    "RandomRotation": "None"
   },
   "ResourceTypes": [
     {

@@ -5,6 +5,7 @@
   "ItemLevel": 15,
   "MaxStack": 10,
   "Icon": "Icons/ItemsGenerated/Wood_Softwood_Planks.png",
+  "Categories": ["Drawers.Drawers"],
   "Categories": [
     "Blocks.Rocks"
   ],

@@ -10,3 +10,5 @@ items.Drawers_Lightwood_Simple.name=Lightwood Drawer
 items.Drawers_Redwood_Simple.name=Redwood Drawer
 items.Drawers_Softwood_Simple.name=Softwood Drawer
 items.Drawers_Tropicalwood_Simple.name=Tropicalwood Drawer
+
+ui.itemcategory.drawer=Drawers

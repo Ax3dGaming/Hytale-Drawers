@@ -5,6 +5,7 @@
   "Parent": "Wood_Softwood_Planks",
   "Icon": "Icons/ItemsGenerated/Wood_Drywood_Planks.png",
   "Set": "Wood_Drywood_Planks",
+  "Categories": ["Drawers.Drawers"],
   "Recipe": {
     "Input": [
       {
