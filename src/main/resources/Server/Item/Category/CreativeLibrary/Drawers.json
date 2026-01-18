@@ -1,0 +1,11 @@
+{
+  "Icon": "Icons/ItemCategories/Drawers.png",
+  "Order": 2,
+  "Children": [
+    {
+      "Id": "Drawers",
+      "Name": "server.ui.itemcategory.drawer",
+      "Icon": "Icons/ItemCategories/Drawer.png"
+    }
+  ]
+}
