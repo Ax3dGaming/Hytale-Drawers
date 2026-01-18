@@ -1,10 +1,12 @@
 package com.axedgaming.drawers;
 
+import com.axedgaming.drawers.interaction.PlaceDrawerInteraction;
 import com.axedgaming.drawers.listener.DrawerInteractListener;
 import com.hypixel.hytale.event.EventRegistration;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.HytaleServer;
 import com.hypixel.hytale.server.core.event.events.player.PlayerInteractEvent;
+import com.hypixel.hytale.server.core.modules.interaction.interaction.config.Interaction;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 
@@ -28,6 +30,14 @@ public class Drawers extends JavaPlugin {
         //Useless but we never know
         this.getCommandRegistry().registerCommand(new GetItemInMainHandCommand());
         //this.getCommandRegistry().registerCommand(new ExampleCommand(this.getName(), this.getManifest().getVersion().toString()));
+
+        this.getCodecRegistry(Interaction.CODEC).register(
+                "place_drawer",
+                PlaceDrawerInteraction.class,
+                PlaceDrawerInteraction.CODEC
+        );
+
+        Drawers.LOGGER.atInfo().log("place_drawer interaction registered");
     }
 
     private EventRegistration registration;

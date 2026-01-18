@@ -2,10 +2,14 @@ package com.axedgaming.drawers.drawer;
 
 public enum DrawerTier {
 
-    BASIC(512),
-    IRON(2048),
-    GOLD(8192),
-    DIAMOND(32768);
+    DEFAULT(500),
+    COPPER(1000),
+    IRON(5000),
+    THORIUM(10000),
+    COBALT(50000),
+    ADAMANTITE(100000),
+    MITHRIL(500000),
+    CREATIVE(Integer.MAX_VALUE);
 
     private final int capacity;
 

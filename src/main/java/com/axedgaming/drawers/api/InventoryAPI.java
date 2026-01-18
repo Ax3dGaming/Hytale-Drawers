@@ -1,47 +1,78 @@
 package com.axedgaming.drawers.api;
 
+import com.hypixel.hytale.component.ComponentAccessor;
+import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.inventory.Inventory;
 import com.hypixel.hytale.server.core.inventory.ItemStack;
 import com.hypixel.hytale.server.core.inventory.container.ItemContainer;
 import com.hypixel.hytale.server.core.inventory.container.SimpleItemContainer;
+import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
 public final class InventoryAPI {
 
     private InventoryAPI() {}
 
-    /**
-     * Remove X items from the player hand
-     */
-    public static void removeFromHand(Player player, int amount) {
+    /* ===============================
+       ITEM EN MAIN (HOTBAR ACTIVE)
+       =============================== */
+
+    public static ItemStack getActiveHandItem(Player player) {
+        if (player == null) return null;
+        return player.getInventory().getActiveHotbarItem();
+    }
+
+    /* ===============================
+       RETIRER X ITEMS DE LA MAIN
+       =============================== */
+
+    public static void removeFromActiveHand(Player player, int amount) {
+        if (player == null || amount <= 0) return;
 
         Inventory inv = player.getInventory();
         byte slot = inv.getActiveHotbarSlot();
-
         if (slot == -1) return;
 
         ItemContainer hotbar = inv.getHotbar();
         ItemStack stack = hotbar.getItemStack(slot);
-
         if (stack == null || stack.isEmpty()) return;
 
-        SimpleItemContainer trash = new SimpleItemContainer((short) 1);
-        hotbar.moveItemStackFromSlot(slot, amount, trash);
+        // Retrait transactionnel propre
+        hotbar.moveItemStackFromSlot(
+                slot,
+                amount,
+                inv.getCombinedEverything()
+        );
     }
 
-    /**
-     * Gives an item to the player, or drop it on ground
-     */
+    /* ===============================
+       DONNER OU DROP UN ITEMSTACK
+       =============================== */
+
     public static void giveOrDrop(Player player, ItemStack stack) {
+        if (player == null || stack == null || stack.isEmpty()) return;
 
-        Inventory inv = player.getInventory();
-        ItemContainer target = inv.getCombinedHotbarFirst();
+        Ref<EntityStore> ref = player.getReference();
+        ComponentAccessor<EntityStore> store = ref.getStore();
 
-        SimpleItemContainer source = new SimpleItemContainer((short) 1);
-        source.setItemStackForSlot((short) 0, stack);
+        ItemContainer target = player
+                .getInventory()
+                .getCombinedHotbarFirst();
 
-        source.moveItemStackFromSlot((short) 0, stack.getQuantity(), target);
+        // ✅ MÉTHODE OFFICIELLE (SimpleItemContainer)
+        SimpleItemContainer.addOrDropItemStack(
+                store,
+                ref,
+                target,
+                stack
+        );
+    }
 
-        source.dropAllItemStacks();
+    /* ===============================
+       CONTAINER POUR INSERTION BULK
+       =============================== */
+
+    public static ItemContainer getBulkInsertContainer(Player player) {
+        return player.getInventory().getCombinedBackpackStorageHotbar();
     }
 }

@@ -1,16 +1,24 @@
 package com.axedgaming.drawers.drawer;
 
+import com.axedgaming.drawers.Drawers;
 import com.hypixel.hytale.math.vector.Vector3i;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class DrawerManager {
+public final class DrawerManager {
 
     private static final Map<Vector3i, DrawerData> DRAWERS = new HashMap<>();
 
-    public static DrawerData getOrCreate(Vector3i pos, DrawerTier tier) {
-        return DRAWERS.computeIfAbsent(pos, p -> new DrawerData(tier));
+    private DrawerManager() {}
+
+    public static void placeDrawer(Vector3i pos, String blockId) {
+        DrawerType type = DrawerRegistry.get(blockId);
+        if (type == null) return;
+
+        DRAWERS.put(pos, new DrawerData(type.getTier().getCapacity()));
+
+        Drawers.LOGGER.atInfo().log("Drawer placed at " + pos.x + " " + pos.y + " " + pos.z);
     }
 
     public static DrawerData get(Vector3i pos) {
@@ -21,3 +29,4 @@ public class DrawerManager {
         DRAWERS.remove(pos);
     }
 }
+

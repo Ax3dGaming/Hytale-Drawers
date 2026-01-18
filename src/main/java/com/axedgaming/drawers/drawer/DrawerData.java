@@ -4,16 +4,28 @@ import com.hypixel.hytale.server.core.inventory.ItemStack;
 
 public class DrawerData {
 
-    private final DrawerTier tier;
-    private String itemId;
+    private final int capacity;
+    private String itemId; // null si vide
     private int amount;
 
-    public DrawerData(DrawerTier tier) {
-        this.tier = tier;
+    public DrawerData(int capacity) {
+        this.capacity = capacity;
     }
 
     public boolean isEmpty() {
         return itemId == null || amount <= 0;
+    }
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public int getCapacity() {
+        return capacity;
     }
 
     public boolean canAccept(ItemStack stack) {
@@ -21,6 +33,9 @@ public class DrawerData {
         return isEmpty() || stack.getItemId().equals(itemId);
     }
 
+    /**
+     * @return how many were inserted
+     */
     public int insert(ItemStack stack) {
         if (!canAccept(stack)) return 0;
 
@@ -28,25 +43,30 @@ public class DrawerData {
             itemId = stack.getItemId();
         }
 
-        int space = tier.getCapacity() - amount;
-        int inserted = Math.min(space, stack.getQuantity());
+        int space = capacity - amount;
+        if (space <= 0) return 0;
 
+        int inserted = Math.min(space, stack.getQuantity());
         amount += inserted;
         return inserted;
     }
 
+    /**
+     * @return extracted stack (or null)
+     */
     public ItemStack extract(int max) {
-        if (isEmpty()) return null;
+        if (isEmpty() || max <= 0) return null;
 
-        int extracted = Math.min(max, amount);
-        amount -= extracted;
+        int taken = Math.min(max, amount);
+        amount -= taken;
 
-        ItemStack stack = new ItemStack(itemId, extracted);
+        ItemStack out = new ItemStack(itemId, taken);
 
         if (amount <= 0) {
+            amount = 0;
             itemId = null;
         }
 
-        return stack;
+        return out;
     }
 }

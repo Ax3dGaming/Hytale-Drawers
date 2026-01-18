@@ -24,6 +24,7 @@
     "OutputQuantity": 1
   },
   "BlockType": {
+    "OverrideInteractions": true,
     "Textures": [
       {
         "All": "BlockTextures/Wood_Blackwood_Planks.png",
@@ -31,7 +32,19 @@
       }
     ],
     "ParticleColor": "#443f37",
-    "VariantRotation": "NESW"
+    "VariantRotation": "NESW",
+    "Interactions": {
+      "Secondary": {
+        "Interactions": [
+          {
+            "Type": "PlaceBlock"
+          },
+          {
+            "Type": "place_drawer"
+          }
+        ]
+      }
+    }
   },
   "ResourceTypes": [
     {
