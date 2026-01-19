@@ -9,6 +9,8 @@ import com.hypixel.hytale.server.core.asset.type.blocktype.config.BlockType;
 import com.hypixel.hytale.server.core.io.PacketHandler;
 import com.hypixel.hytale.server.core.io.adapter.PacketWatcher;
 
+//TODO: Remove the debug
+
 public class PacketListener implements PacketWatcher {
     @Override
     public void accept(PacketHandler packetHandler, Packet packet){
