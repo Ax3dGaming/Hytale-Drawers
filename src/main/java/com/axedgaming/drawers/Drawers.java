@@ -1,11 +1,14 @@
 package com.axedgaming.drawers;
 
+import com.axedgaming.drawers.api.PacketListener;
 import com.axedgaming.drawers.interaction.PlaceDrawerInteraction;
 import com.axedgaming.drawers.listener.DrawerInteractListener;
 import com.hypixel.hytale.event.EventRegistration;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.HytaleServer;
+import com.hypixel.hytale.server.core.HytaleServerConfig;
 import com.hypixel.hytale.server.core.event.events.player.PlayerInteractEvent;
+import com.hypixel.hytale.server.core.io.adapter.PacketWatcher;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.config.Interaction;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
@@ -27,6 +30,10 @@ public class Drawers extends JavaPlugin {
 
     @Override
     protected void setup() {
+        PacketWatcher watcher = new PacketListener();
+
+        LOGGER.atInfo().log("PacketListener registered");
+
         //Useless but we never know
         this.getCommandRegistry().registerCommand(new GetItemInMainHandCommand());
         //this.getCommandRegistry().registerCommand(new ExampleCommand(this.getName(), this.getManifest().getVersion().toString()));
